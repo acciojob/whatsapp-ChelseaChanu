@@ -1,7 +1,5 @@
 package com.driver;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 import org.springframework.stereotype.Repository;
@@ -74,9 +72,7 @@ public class WhatsappRepository {
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
         messageId++;
-        LocalDate timestamp = LocalDate.now();
-        Date date = Date.from(timestamp.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        Message message = new Message(messageId, content, date);
+        Message message = new Message(messageId, content);
         messageDB.put(messageId,message);
         return messageId;
     }
